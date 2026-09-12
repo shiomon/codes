@@ -28,7 +28,7 @@ wget -O /root/Yunzai/plugins/example/兑换码.js https://ghfast.top/https://raw
 ## 📖 使用
 
 发送任意包含 `兑换码` 或 `code` 关键词的指令即可。全部游戏，理论上经过 QQBot-plugin 的都可以，例如：
-
+(米哈游游戏待测，没到前瞻)
 - `#兑换码`
 - `*兑换码`
 - `%兑换码`
