@@ -39,7 +39,7 @@ wget -O /root/Yunzai/plugins/example/兑换码.js https://raw.githubusercontent.
 - `%兑换码`
 - `end兑换码`
 - `nte兑换码`
-- `zzz兑换码`
+- `ww兑换码`
 
 机器人会在原消息后追加一条代码块消息，每个兑换码可单独复制。
 

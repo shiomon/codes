@@ -16,7 +16,7 @@ import common from '../../lib/common/common.js'
  %兑换码
  end兑换码
  nte兑换码
- zzz兑换码
+ ww兑换码
  */
 
 
