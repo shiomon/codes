@@ -37,10 +37,10 @@ wget -O /root/Yunzai/plugins/example/兑换码.js https://raw.githubusercontent.
 
 发送任意包含 `兑换码` 或 `code` 关键词的指令即可。全部游戏，理论上经过 QQBot-plugin 的都可以，例如：
 (星铁，绝区零待测，没到前瞻)
-✅ `#兑换码`
-✅ `end兑换码`
-✅ `nte兑换码`
-✅ `ww兑换码`
+- ✅ `#兑换码`
+- ✅ `end兑换码`
+- ✅ `nte兑换码`
+- ✅ `ww兑换码`
 - `*兑换码`
 - `%兑换码`
 
