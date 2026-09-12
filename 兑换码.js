@@ -4,7 +4,19 @@ import common from '../../lib/common/common.js'
 /*
  * 作者：小梦
  * Github项目地址：https://github.com/shiomon/codes
+ 🔍 自动提取消息中的兑换码（大写字母+数字，6~20位）
+ 📋 追加发送 markdown 代码块，支持QQ上一键复制
+ 🚫 不修改原消息，不影响原插件发送
+ 🤖 仅 QQBot 生效，其他适配器无影响
  
+ 发送任意包含 兑换码 或 code 关键词（全部游戏）的指令即可，
+ 理论上经过QQBot-plugin都可以例如：（米哈游的游戏没测，得等到前瞻）
+ #兑换码
+ *兑换码
+ %兑换码
+ end兑换码
+ nte兑换码
+ zzz兑换码
  */
 
 
