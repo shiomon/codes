@@ -19,10 +19,15 @@ QQBot 下兑换码追加发送可复制代码块。
 
 
 ## 📦 安装
-
-```bash
 # 下载到 Yunzai 的 plugins/example 目录
+国内环境
+```bash
 wget -O /root/Yunzai/plugins/example/兑换码.js https://ghfast.top/https://raw.githubusercontent.com/shiomon/codes/main/兑换码.js
+```
+
+国外环境
+```bash
+wget -O /root/Yunzai/plugins/example/兑换码.js https://raw.githubusercontent.com/shiomon/codes/main/兑换码.js
 ```
 
 ## 📖 使用
