@@ -15,7 +15,7 @@ QQBot 下兑换码追加发送可复制代码块。
 <img width="525" height="773" alt="c5e20570-48a1-4f8a-91f4-3034e8418bc2" src="https://github.com/user-attachments/assets/cf357f30-3ead-4589-8438-cb9aa33d391b" />
 <img width="715" height="677" alt="QQ_1789225107286" src="https://github.com/user-attachments/assets/c0862a64-6b6a-436a-8ecc-20ce95971cb3" />
 <img width="700" height="679" alt="QQ_1789225131218" src="https://github.com/user-attachments/assets/cf52540d-16ae-41ac-8911-d9f5f59cdef9" />
-<img width="718" height="740" alt="QQ_1789225164567" src="https://github.com/user-attachments/assets/329bc218-ba63-4964-871f-65ce3ae00a5b" />
+<img width="711" height="729" alt="image" src="https://github.com/user-attachments/assets/a46a99ae-ce6a-4a00-8bd9-170f690d76c1" />
 
 
 
