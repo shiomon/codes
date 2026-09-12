@@ -8,12 +8,15 @@ QQBot 下兑换码追加发送可复制代码块。
 
 ## ✨ 功能
 
-- 🔍 自动提取消息中的兑换码（大写字母+数字，6~20位）
+- 🔍 自动提取消息中的兑换码（大写字母+数字，6~20位，原神支持中文）
 - 📋 追加发送 markdown 代码块，支持 QQ 上一键复制
 - 🚫 不修改原消息，不影响原插件发送
 - 🤖 仅 QQBot 生效，其他适配器无影响
-- <img width="1190" height="686" alt="ce7657ad18b651a5561055717356b9f7" src="https://github.com/user-attachments/assets/98ed9cf3-52f7-4a7a-a1cf-030afdff38f3" />
-<img width="478" height="632" alt="ee51b9d245ced2a137445a4b9b6698ee" src="https://github.com/user-attachments/assets/43dce2f6-a0a8-4865-84e4-f7f8c43e561e" /><img width="1076" height="2144" alt="744201ef1336df76cb2cf8d9c06a92e0" src="https://github.com/user-attachments/assets/fcf175d3-7819-4551-910d-38f1ef8c5490" />
+<img width="525" height="773" alt="c5e20570-48a1-4f8a-91f4-3034e8418bc2" src="https://github.com/user-attachments/assets/cf357f30-3ead-4589-8438-cb9aa33d391b" />
+<img width="715" height="677" alt="QQ_1789225107286" src="https://github.com/user-attachments/assets/c0862a64-6b6a-436a-8ecc-20ce95971cb3" />
+<img width="700" height="679" alt="QQ_1789225131218" src="https://github.com/user-attachments/assets/cf52540d-16ae-41ac-8911-d9f5f59cdef9" />
+<img width="718" height="740" alt="QQ_1789225164567" src="https://github.com/user-attachments/assets/329bc218-ba63-4964-871f-65ce3ae00a5b" />
+
 
 
 
@@ -33,13 +36,13 @@ wget -O /root/Yunzai/plugins/example/兑换码.js https://raw.githubusercontent.
 ## 📖 使用
 
 发送任意包含 `兑换码` 或 `code` 关键词的指令即可。全部游戏，理论上经过 QQBot-plugin 的都可以，例如：
-(米哈游游戏待测，没到前瞻)
-- `#兑换码`
+(星铁，绝区零待测，没到前瞻)
+✅ `#兑换码`
+✅ `end兑换码`
+✅ `nte兑换码`
+✅ `ww兑换码`
 - `*兑换码`
 - `%兑换码`
-- `end兑换码`
-- `nte兑换码`
-- `ww兑换码`
 
 机器人会在原消息后追加一条代码块消息，每个兑换码可单独复制。
 
