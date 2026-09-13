@@ -1,20 +1,15 @@
 import plugin from '../../lib/plugins/plugin.js'
-import common from '../../lib/common/common.js'
 
 /*
  * 作者：小梦
  * 项目：github.com/shiomon/codes
-  🍱 米游(原神/星铁/崩三/绝区零)：getCode 直接读取，抑制原发送，自己发1条
-  🎮 其他游戏(end/nte/ww前缀)：从消息提取，1秒延迟合并发送
-  📋 markdown 代码块，支持Q上一键复制
-  ✅ #兑换码
-  ✅ end兑换码
-  ✅ nte兑换码
-  ✅ ww兑换码
-  待测*兑换码
-  待测%兑换码
-  🤖 仅 官机 生效，其他适配器无影响
-*/
+ * 🍱 米游(原神/星铁/崩三/绝区零)：getCode 直接读取，抑制原发送，自己发1条
+ * 🎮 其他游戏(end/nte/ww前缀)：从消息提取，1秒延迟合并发送
+ * 📋 markdown 代码块，支持Q上一键复制
+ * ✅ #兑换码 / end兑换码 / nte兑换码 / ww兑换码
+ * 待测 *兑换码 / %兑换码
+ * 🤖 仅 官机 生效，其他适配器无影响
+ */
 
 function extractText(item) {
   if (!item) return ''
@@ -46,7 +41,7 @@ function extractCodes(text) {
   const cleanText = text.replace(/https?:\/\/\S+/g, '').replace(/!\[[^\]]*\]\([^)]*\)/g, '')
   const alnumCodes = cleanText.match(/[A-Za-z][A-Za-z0-9]{5,19}/g) || []
   for (const c of alnumCodes) {
-    if (!codes.includes(c)) codes.push(c)
+    codes.push(c)
   }
   return [...new Set(codes)]
 }
@@ -65,10 +60,7 @@ function extractCodesFromButtons(msg) {
         }
       }
     }
-    if (item.data) {
-      if (Array.isArray(item.data)) codes.push(...extractCodesFromButtons(item.data))
-      else if (typeof item.data === 'object') codes.push(...extractCodesFromButtons(item.data))
-    }
+    if (item.data) codes.push(...extractCodesFromButtons(item.data))
     if (item.message) codes.push(...extractCodesFromButtons(item.message))
   }
   return [...new Set(codes)]
@@ -137,7 +129,7 @@ async function hookMihoyo(e) {
       }
 
       if (codes.length) {
-        time = this.deadline || ''
+        time = this.deadline || '未知'
         let md = `${title}直播兑换码\n过期时间: ${time}\n`
         for (const code of codes) {
           md += `\n\`\`\`兑换码\n${code}\n\`\`\`\n`
@@ -275,6 +267,10 @@ function wrapSdk(e) {
   logger.mark(`[兑换码复制] SDK已设置 private=${!!origPrivate} group=${!!origGroup}`)
 }
 
+function isQQBot(e) {
+  return e?.bot?.version?.id === 'QQBot' || e?.adapter_id === 'QQBot'
+}
+
 export class GachaCode extends plugin {
   constructor() {
     super({
@@ -296,16 +292,14 @@ export class GachaCode extends plugin {
   }
 
   async interceptMihoyo(e) {
-    const isQQBot = e?.bot?.version?.id === 'QQBot' || e?.adapter_id === 'QQBot'
-    if (!isQQBot) return false
+    if (!isQQBot(e)) return false
     logger.mark('[兑换码复制] 米游指令')
     await hookMihoyo(e)
     return false
   }
 
   async interceptOther(e) {
-    const isQQBot = e?.bot?.version?.id === 'QQBot' || e?.adapter_id === 'QQBot'
-    if (!isQQBot) return false
+    if (!isQQBot(e)) return false
     logger.mark('[兑换码复制] 其他指令')
     wrapReply(e)
     wrapSdk(e)
