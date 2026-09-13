@@ -3,11 +3,17 @@ import common from '../../lib/common/common.js'
 
 /*
  * 作者：小梦
- * Github项目地址：https://github.com/shiomon/codes
-  🍱 米哈游(原神/星铁/崩三/绝区零)：劫持getCode 从API直接读取，抑制原发送，自己发1条
-  🎮 其他游戏(end/nte/ww前缀)：SDK劫持从消息提取，1秒延迟合并发送
-  📋 markdown 代码块，支持QQ上一键复制
-  🤖 仅 QQBot 生效，其他适配器无影响
+ * 项目：github.com/shiomon/codes
+  🍱 米游(原神/星铁/崩三/绝区零)：getCode 直接读取，抑制原发送，自己发1条
+  🎮 其他游戏(end/nte/ww前缀)：从消息提取，1秒延迟合并发送
+  📋 markdown 代码块，支持Q上一键复制
+  ✅ #兑换码
+  ✅ end兑换码
+  ✅ nte兑换码
+  ✅ ww兑换码
+  待测*兑换码
+  待测%兑换码
+  🤖 仅 官机 生效，其他适配器无影响
 */
 
 function extractText(item) {
@@ -136,7 +142,7 @@ async function hookMihoyo(e) {
         for (const code of codes) {
           md += `\n\`\`\`兑换码\n${code}\n\`\`\`\n`
         }
-        logger.mark(`[兑换码复制] 劫持getCode 发1条含${codes.length}个码`)
+        logger.mark(`[兑换码复制] getCode 发1条含${codes.length}个码`)
         await origReply(segment.markdown(md))
       } else {
         for (const msg of collectedMsgs) {
@@ -145,7 +151,7 @@ async function hookMihoyo(e) {
       }
       restore()
     }
-    logger.mark('[兑换码复制] 已hook米哈游插件getCode')
+    logger.mark('[兑换码复制] 已hook米游插件getCode')
     return true
   } catch (err) {
     logger.error(`[兑换码复制] hookMihoyo失败: ${err?.message || err}`)
@@ -194,7 +200,7 @@ function wrapReply(e) {
 function wrapSdk(e) {
   const sdk = e.bot?.sdk
   if (!sdk) {
-    logger.mark('[兑换码复制] e.bot.sdk不存在 跳过SDK劫持')
+    logger.mark('[兑换码复制] e.bot.sdk不存在 跳过SDK')
     return
   }
 
@@ -215,7 +221,7 @@ function wrapSdk(e) {
     restored = true
     if (origPrivate) sdk.sendPrivateMessage = origPrivate
     if (origGroup) sdk.sendGroupMessage = origGroup
-    logger.mark('[兑换码复制] SDK劫持已恢复')
+    logger.mark('[兑换码复制] SDK已恢复')
   }
   const flush = async () => {
     flushTimer = null
@@ -266,7 +272,7 @@ function wrapSdk(e) {
       handleSend(origGroup, groupId, msg, event, options)
   }
 
-  logger.mark(`[兑换码复制] SDK劫持已设置 private=${!!origPrivate} group=${!!origGroup}`)
+  logger.mark(`[兑换码复制] SDK已设置 private=${!!origPrivate} group=${!!origGroup}`)
 }
 
 export class GachaCode extends plugin {
@@ -292,7 +298,7 @@ export class GachaCode extends plugin {
   async interceptMihoyo(e) {
     const isQQBot = e?.bot?.version?.id === 'QQBot' || e?.adapter_id === 'QQBot'
     if (!isQQBot) return false
-    logger.mark('[兑换码复制] 米哈游指令')
+    logger.mark('[兑换码复制] 米游指令')
     await hookMihoyo(e)
     return false
   }
