@@ -7,18 +7,18 @@ import { fileURLToPath } from 'url'
  * 作者：小梦
  * 项目：github.com/shiomon/codes
  *   🍱 米游(原神/星铁/崩三/绝区零)：getCode 直接读取，抑制原发送，自己发1条
- *   🎮 4399游戏(鸣潮/终末地/异环)：直接调4399 API 查询兑换码
- *   📋 markdown 代码块，支持Q上一键复制
- *   ✅ #原神兑换码 / #星铁兑换码
+ *   🎮 4399游戏(鸣潮/终末地/异环)：直接调 API 查询兑换码
+ *   📋 markdown 代码块，支持Q上一键复制，仅官机生效
+ *   ✅ #原神兑换码 / #兑换码
  *   ✅ #鸣潮兑换码 / ww兑换码
  *   ✅ #终末地兑换码 / end兑换码
  *   ✅ #异环兑换码 / nte兑换码
+ *    *  待测：绝区零，星铁
  *   🔧 #兑换码原神开/关 — 米游兑换码开关
  *   🔧 #兑换码ww开/关 — 鸣潮兑换码开关
  *   🔧 #兑换码end开/关 — 终末地兑换码开关
  *   🔧 #兑换码nte开/关 — 异环兑换码开关
  *   🔧 #兑换码开关 — 查看全部开关状态
- *   🤖 米游仅 官机 生效，4399游戏全适配器
  *   致谢:TimeRainStarSky/Yunzai
  *        gitcode.com/gscore-mirror/EndUID
  *        gitcode.com/gscore-mirror/NTEUID
@@ -234,6 +234,9 @@ async function hookMihoyo(e) {
     const timer = setTimeout(restore, 30000)
 
     proto.getCode = async function() {
+      if (!isQQBot(this.e)) {
+        return origGetCode.call(this)
+      }
       const codes = []
       let title = ''
       let time = ''
