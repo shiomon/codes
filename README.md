@@ -4,50 +4,51 @@
 
 ---
 
-## v2 重构（2026-09-16）
-## 绝区零，星铁待测
-- 🎮 **直查**：鸣潮/终末地/异环 直接调API 查询兑换码
-- 🍱 **米游**：原神/星铁/崩三/绝区零 hook getCode，
-- 🔧 **开关指令**：每个游戏可单独开/关，状态持久化， `data/兑换码/switch.json`
+## 功能
 
-### 指令
+| 功能 | 游戏 |  说明 |
+|------|------|------|
+| 🍱 **米游 hook** | 原神/星铁/绝区零 | hook 原插件 getCode+getData，抑制原发送，发1条 markdown 代码块 |
+| 🎮 **4399 直查** | 鸣潮/终末地/异环 | 直接调  API 查询，QQBot 代码块可复制，非 QQBot 纯文本 |
 
-`#原神兑换码`  `#兑换码` 丨
-`#鸣潮兑换码` `ww兑换码`  丨
-`#终末地兑换码`  `end兑换码`  丨
-`#异环兑换码`  `nte兑换码`
-
-### 开关指令
-
-| 指令 | 作用 |
-|------|------|
-| `#兑换码原神开/关` | 米游兑换码开关 |
-| `#兑换码ww开/关` | 鸣潮兑换码开关 |
-| `#兑换码end开/关` | 终末地兑换码开关 |
-| `#兑换码nte开/关` | 异环兑换码开关 |
-| `#兑换码开关` | 查看全部开关状态 |
+> 绝区零、星铁待测
 
 ---
 
-## v1 原版
+## 指令
 
-QQBot 下兑换码追加发送可复制代码块。
+### 查询指令
 
-当用户发送 `兑换码`、`code` 等指令时，原插件正常发送兑换码消息后，自动追加一条带代码块的消息，每个兑换码包裹在 ` ```兑换码 ` 代码块中，QQ可一键复制。
+| 指令  |
+|------|
+| `#原神兑换码` `#兑换码` |
+| `#鸣潮兑换码` `ww兑换码` |
+| `#终末地兑换码` `end兑换码`  |
+| `#异环兑换码` `nte兑换码`  |
 
-### ✨ 功能
+### 开关指令
 
-- 🔍 自动提取消息中的兑换码（大写字母+数字，6~20位，原神支持中文）
-- 📋 追加发送 markdown 代码块，支持 QQ 上一键复制
-- 🚫 不修改原消息，不影响原插件发送
-- 🤖 仅 QQBot 生效，其他适配器无影响
+| 指令 | 作用 | 默认 |
+|------|------|------|
+| `#兑换码原神开/关` | 米游兑换码开关 | 开 |
+| `#兑换码ww开/关` | 鸣潮兑换码开关 | 开 |
+| `#兑换码end开/关` | 终末地兑换码开关 | 开 |
+| `#兑换码nte开/关` | 异环兑换码开关 | 开 |
+| `#兑换码信息开/关` | 奖励信息显示开关 | **关** |
+| `#兑换码开关` | 查看全部开关状态 | — |
 
-<img width="525" height="773" alt="c5e20570-48a1-4f8a-91f4-3034e8418bc2" src="https://github.com/user-attachments/assets/cf357f30-3ead-4589-8438-cb9aa33d391b" />
-<img width="715" height="677" alt="QQ_1789225107286" src="https://github.com/user-attachments/assets/c0862a64-6b6a-416a-8ecc-20ce95971cb3" />
-<img width="700" height="679" alt="QQ_1789225131218" src="https://github.com/user-attachments/assets/cf52540d-16ae-41ac-8911-d9f5f59cdef9" />
-<img width="711" height="729" alt="image" src="https://github.com/user-attachments/assets/a46a99ae-ce6a-4a00-8bd9-170f690d76c1" />
+> 奖励信息默认关：只发兑换码（QQBot 代码块可一键复制 / 非 QQBot 纯文本）
+> 开启后显示兑换码 + 奖励 + 有效期
 
-### 📦 安装
+---
+
+## 数据
+
+- 开关状态持久化：`data/兑换码/switch.json`
+
+---
+
+## 安装
 
 国内环境
 ```bash
@@ -59,21 +60,11 @@ wget -O /root/Yunzai/plugins/example/兑换码.js https://ghfast.top/https://raw
 wget -O /root/Yunzai/plugins/example/兑换码.js https://raw.githubusercontent.com/shiomon/codes/main/兑换码.js
 ```
 
-### 📖 使用
+---
 
-发送任意包含 `兑换码` 或 `code` 关键词的指令即可。全部游戏，理论上经过 QQBot-plugin 的都可以，例如：
-(星铁，绝区零待测，没到前瞻)
-- ✅ `#兑换码`
-- ✅ `end兑换码`
-- ✅ `nte兑换码`
-- ✅ `ww兑换码`
-- `*兑换码`
-- `%兑换码`
+## 致谢
 
-机器人会在原消息后追加一条代码块消息，每个兑换码可单独复制。
-
-### 📝 说明
-
-- 插件 priority 为 1，仅做拦截包装，不影响其他插件处理
-- SDK 劫持在发送完成后 30 秒自动恢复，不影响后续消息
-- 仅在 QQBot 适配器下生效（`e.bot.version.id === 'QQBot'`）
+ *   致谢:TimeRainStarSky/Yunzai
+ *        gitcode.com/gscore-mirror/EndUID
+ *        gitcode.com/gscore-mirror/NTEUID
+ *        gitcode.com/gscore-mirror/XutheringWavesUID

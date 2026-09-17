@@ -18,6 +18,7 @@ import { fileURLToPath } from 'url'
  *   🔧 #兑换码ww开/关 — 鸣潮兑换码开关
  *   🔧 #兑换码end开/关 — 终末地兑换码开关
  *   🔧 #兑换码nte开/关 — 异环兑换码开关
+ *   🔧 #兑换码信息开/关 — 鸣潮,异环,终末地兑换码奖励信息显示开关（默认关，只发兑换码）
  *   🔧 #兑换码开关 — 查看全部开关状态
  *   致谢:TimeRainStarSky/Yunzai
  *        gitcode.com/gscore-mirror/EndUID
@@ -40,6 +41,10 @@ export class GachaCode extends plugin {
         {
           reg: '^#兑换码开关$',
           fnc: 'showSwitch',
+        },
+        {
+          reg: '^#兑换码信息(开|关)$',
+          fnc: 'toggleInfo',
         },
         {
           reg: '^(#|\\*|/)?(原神|星铁|崩铁|崩三|崩坏三|崩坏3|绝区零)?(直播|前瞻)?兑换码$',
@@ -69,7 +74,17 @@ export class GachaCode extends plugin {
     for (const [key, name] of Object.entries(SWITCH_NAMES)) {
       msg += `${name}：${SWITCH[key] ? '开' : '关'}\n`
     }
+    msg += `奖励信息：${SWITCH.info ? '开' : '关'}`
     await e.reply([segment.at(e.user_id), `\n${msg}`])
+    return true
+  }
+
+  async toggleInfo(e) {
+    const m = e.msg.match(/^#兑换码信息(开|关)$/)
+    if (!m) return false
+    SWITCH.info = m[1] === '开'
+    saveSwitch()
+    await e.reply([segment.at(e.user_id), `\n兑换码奖励信息已${SWITCH.info ? '开启' : '关闭'}`])
     return true
   }
 
@@ -128,9 +143,10 @@ function loadSwitch() {
       ww: data.ww ?? true,
       end: data.end ?? true,
       nte: data.nte ?? true,
+      info: data.info ?? false,
     }
   } catch {
-    return { mihoyo: true, ww: true, end: true, nte: true }
+    return { mihoyo: true, ww: true, end: true, nte: true, info: false }
   }
 }
 
@@ -188,16 +204,25 @@ function isQQBot(e) {
 }
 
 function formatCodes(e, gameName, codes) {
+  const showInfo = SWITCH.info
   if (isQQBot(e)) {
     let md = `${gameName}兑换码（共${codes.length}个）\n`
     for (const c of codes) {
-      md += `\n${c.reward} ${c.label}\n\`\`\`兑换码\n${c.code}\n\`\`\`\n`
+      if (showInfo) {
+        md += `\n${c.reward} ${c.label}\n\`\`\`兑换码\n${c.code}\n\`\`\`\n`
+      } else {
+        md += `\n\`\`\`兑换码\n${c.code}\n\`\`\`\n`
+      }
     }
     return segment.markdown(md)
   }
   let text = `${gameName}兑换码（共${codes.length}个）\n`
   for (const c of codes) {
-    text += `\n兑换码：${c.code}\n奖励：${c.reward}\n${c.label}\n`
+    if (showInfo) {
+      text += `\n兑换码：${c.code}\n奖励：${c.reward}\n${c.label}\n`
+    } else {
+      text += `\n兑换码：${c.code}\n`
+    }
   }
   return text
 }
