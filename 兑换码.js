@@ -20,7 +20,8 @@ import { fileURLToPath } from 'url'
  *   🔧 #兑换码nte开/关 — 异环兑换码开关
  *   🔧 #兑换码信息开/关 — 鸣潮,异环,终末地兑换码奖励信息显示开关（默认关，只发兑换码）
  *   🔧 #兑换码开关 — 查看全部开关状态
- *   致谢:TimeRainStarSky/Yunzai
+ *   致谢:
+ *        gitcode.com/TimeRainStarSky/Yunzai
  *        gitcode.com/gscore-mirror/EndUID
  *        gitcode.com/gscore-mirror/NTEUID
  *        gitcode.com/gscore-mirror/XutheringWavesUID
@@ -30,7 +31,7 @@ export class GachaCode extends plugin {
   constructor() {
     super({
       name: '兑换码复制',
-      dsc: '兑换码查询：米游hook+4399游戏直查',
+      dsc: 'example/兑换码',
       event: 'message',
       priority: 1,
       rule: [
