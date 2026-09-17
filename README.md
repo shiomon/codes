@@ -9,9 +9,12 @@
 | 功能 | 游戏 |  说明 |
 |------|------|------|
 | 🍱 **米游 hook** | 原神/星铁/绝区零 | hook 原插件 getCode+getData，抑制原发送，发1条 markdown 代码块 |
-| 🎮 **4399 直查** | 鸣潮/终末地/异环 | 直接调  API 查询，QQBot 代码块可复制，非 QQBot 纯文本 |
+| 🎮 **API 直查** | 鸣潮/终末地/异环 | 直接调  API 查询，QQBot 代码块可复制，非 QQBot 纯文本 |
 
 > 绝区零、星铁待测
+<img width="940" height="827" alt="QQ_1789605434249" src="https://github.com/user-attachments/assets/78e37db4-d43b-4b74-88db-cb0932b06ea8" />
+<img width="970" height="420" alt="QQ_1789605454518" src="https://github.com/user-attachments/assets/42d052c4-984b-4a09-bac0-b9c39c4d31e0" />
+<img width="973" height="904" alt="QQ_1789605477981" src="https://github.com/user-attachments/assets/4d9f92c9-cb0c-44a4-912c-a0e1c4e37a10" />
 
 ---
 
@@ -63,8 +66,7 @@ wget -O /root/Yunzai/plugins/example/兑换码.js https://raw.githubusercontent.
 ---
 
 ## 致谢
-
- *   致谢:TimeRainStarSky/Yunzai
+ *        gitcode.com/TimeRainStarSky/Yunzai
  *        gitcode.com/gscore-mirror/EndUID
  *        gitcode.com/gscore-mirror/NTEUID
  *        gitcode.com/gscore-mirror/XutheringWavesUID
