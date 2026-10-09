@@ -1,8 +1,6 @@
-# 🎁 全部游戏 兑换码 一键复制
+# 🎁 云崽框架二游兑换码 一键复制
 
 > 作者：小梦
-
----
 
 ## 功能
 
@@ -77,8 +75,6 @@ wget -O /root/Yunzai/plugins/example/兑换码.js https://raw.githubusercontent.
 ## 致谢
 
 - TimeRainStarSky/Yunzai
-- yoimiya-kokomi/miao-plugin
-- ZZZure/ZZZ-Plugin
 - gitcode.com/gscore-mirror/EndUID
 - gitcode.com/gscore-mirror/NTEUID
 - gitcode.com/gscore-mirror/XutheringWavesUID
