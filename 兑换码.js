@@ -125,7 +125,7 @@ export class GachaCode extends plugin {
       name: "兑换码复制",
       dsc: "example/兑换码",
       event: "message",
-      priority: 1,
+      priority: -10000,
       rule: [
         { reg: `^#兑换码(${SWITCH_PATTERN})(开|关)$`, fnc: "toggleSwitch", permission: "master" },
         { reg: "^#兑换码开关$", fnc: "showSwitch", permission: "master" },
