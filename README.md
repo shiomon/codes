@@ -59,15 +59,18 @@
 ---
 
 ## 安装
-
+在框架主目录下
+```bash
+cd Yunzai
+```
 国内环境
 ```bash
-wget -O /root/Yunzai/plugins/example/兑换码.js https://ghfast.top/https://raw.githubusercontent.com/shiomon/codes/main/兑换码.js
+wget -O ./plugins/example/兑换码.js https://ghfast.top/https://raw.githubusercontent.com/shiomon/codes/main/兑换码.js
 ```
 
 国外环境
 ```bash
-wget -O /root/Yunzai/plugins/example/兑换码.js https://raw.githubusercontent.com/shiomon/codes/main/兑换码.js
+wget -O ./plugins/example/兑换码.js https://raw.githubusercontent.com/shiomon/codes/main/兑换码.js
 ```
 
 ---
